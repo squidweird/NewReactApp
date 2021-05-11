@@ -3,13 +3,16 @@ import "../Components/popup.css"
 
 function Popup(props){
     return(
-        <div className="container">
-        <img className="container" src={props.img} alt=""/>
-        <h2 className="container">{props.title}</h2>
-        <p className="container">{props.content}</p>
-        <img className="container" src={props.avatar} alt="" />
-        <p className="container" >{props.name} {props.role}</p>
+        <div className="container-popup">
+        <button className="popup-button" onClick={props.closeModal}> Close
+        </button>
+        <img className="popup-img" src={props.img} alt=""/>
+        <h2 className="popup-title">{props.title}</h2>
+        <p className="popup-content">{props.content}</p>
+        <img className="popup-avatar" src={props.avatar} alt="" />
+        <p className="popup-name" >{props.name} {props.role}</p>
         </div>
+    
     )
 }
 

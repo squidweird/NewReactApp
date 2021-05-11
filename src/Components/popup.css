@@ -1,0 +1,40 @@
+.container-popup{
+   text-align: center;  
+   background-color: #ffffff;
+   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+   padding-left: 0;
+   padding-bottom: 10px;
+   padding-top: 10px;
+   padding-right: 0;
+}
+.popup-img{
+  width: 600px;
+  border-radius: 8px;
+}
+
+.popup-img:hover{
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+}
+
+.popup-avatar{
+    border-radius: 50%;
+    width: 10%;
+}
+
+.popup-title{
+    font-size: 2rem;
+}
+
+.popup-name{
+    text-decoration: wavy;
+}
+.popup-content{
+    font-size: 1.25rem;
+}
+.popup-button{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}

@@ -3,6 +3,10 @@ body {
   text-align: centre;
   background-color: #f5f5f5;
   background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
+
+}
+#root{
+  padding-left: 200px;
 }
 .card {
   font-family: "Lato", sans-serif;
@@ -48,6 +52,7 @@ img {
   border-radius: 50%;
   display: inline-block;
   margin-right: 2px;
+  
 }
 .dot-2 {
   height: 10px;
@@ -55,11 +60,12 @@ img {
   background-color: rgb(165, 206, 51);
   border-radius: 50%;
   display: inline-block;
+
 }
 .date {
   text-align: right;
   position: relative;
-  left: 220px;
+  left: 250px;
 }
 img:hover{
   filter: grayscale(100%);
@@ -81,9 +87,19 @@ img:hover{
   text-decoration: none;
   text-align: center;
   transition: all 0.2s;;
+  border-style: none;
+  background-color: none;
+  background: none;
+  font-size: 1.35rem;
+  color: #FFFFFF;
+  cursor: pointer;
 }
 
 .card:hover .button{
   opacity: 1;
+  
 }
 
+Modal{
+  width: 400px;
+}

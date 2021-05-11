@@ -1,13 +1,31 @@
 import React, { useEffect, useState } from "react";
 import Cards from "./Cards";
 import axios from "axios";
-import "../Components/styles.css"
-import Popup from "../Components/popup";
+import "../Components/styles.css";
+import Modal from "react-modal";
+import Popup from "./popup"
+import "../Components/popup.css"
+
 
 export default function App() {
   const [Data, setData] = useState([]);
-  // const [popupID, setpopupID] =useState(0); couldnt use them for popup 
-  // const [isTrue, setisTrue] = useState(true);
+  const [modalIsopen, setmodalIsopen] = useState(false);
+  const [modalId , setmodalId] = useState(1);
+  const [modalData, setmodalData] = useState({
+    "id": 1,
+    "date": 1606311631,
+    "title": "A Simple Guide to Design Thinking",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "thumbnail": {
+      "large": "https://images.unsplash.com/photo-1454692173233-f4f34c12adad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1180&q=80",
+      "small": "https://images.unsplash.com/photo-1454692173233-f4f34c12adad?ixlib=rb-1.2.1&auto=format&fit=crop&w=590&q=80"
+    },
+    "author": {
+      "name": "John Doe",
+      "avatar": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80",
+      "role": "Product Owner"
+    }
+  });
   const gitHubUrl =
     "https://my-json-server.typicode.com/Codeinwp/front-end-internship-api/posts";
   const getGiHubUserWithAxios = async () => {
@@ -20,15 +38,21 @@ export default function App() {
   }, []);
 
   function changeComponent(id){
-  console.log("changed")
-  }
+    setmodalId(id-1);
+    const obj = Data[id-1];
+    setmodalData(obj);
+    setmodalIsopen(true);
+    }
+
+  
 
  
 
   return (
-    <div className="row">
+    <div>
       {Data.map((item) => {
         return (
+          <div className="row">
           <Cards
             key={item.id}
             id={item.id}
@@ -38,20 +62,23 @@ export default function App() {
             author={item.author.name}
             role={item.author.role}
             onClick={changeComponent}
-          />
-        ) 
+          />    
+        </div>)
       })}
-
-    </div>
+      <Modal isOpen={modalIsopen}>
+           <Popup 
+            id={modalId}
+            key={modalId}
+            img={modalData.thumbnail.large}
+            title={modalData.title}
+            content={modalData.content}
+            avatar={modalData.author.avatar}
+            name={modalData.author.name}
+            role={modalData.author.role}
+            closeModal ={()=> setmodalIsopen(false)}
+          />  
+          </Modal> 
+</div>
+ 
   ) 
 }
-
-//tried to render this popup by using a state variable isTrue, Popup gets created from each and every card on screen , yet to figure out how to conditionaaly rebder a single popup using the id and eventlistener.//
-{/* <Popup
-img={item.thumbnail.large}
-title={item.title}
-content={item.content}
-avatar={item.author.avatar}
-name={item.author.name}
-role={item.author.role}
-/> */}
